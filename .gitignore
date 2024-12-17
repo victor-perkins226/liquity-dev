@@ -33,4 +33,3 @@ ngrok.config.yml
 !/.yarn/releases
 !/.yarn/sdks
 !/.yarn/versions
-yarn.lock
