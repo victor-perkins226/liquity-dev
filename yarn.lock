@@ -304,6 +304,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@bitcoinerlab/secp256k1@npm:^1.1.1":
+  version: 1.2.0
+  resolution: "@bitcoinerlab/secp256k1@npm:1.2.0"
+  dependencies:
+    "@noble/curves": ^1.7.0
+  checksum: c95eda77bc271f178d19a9c48cce53e5a303f6710dbd650aa24405416d87b52ab03038b7e28cc55150a0cdf0bd463d2b299791777c332c1556c86d03159e965a
+  languageName: node
+  linkType: hard
+
+"@brandonblack/musig@npm:^0.0.1-alpha.1":
+  version: 0.0.1-alpha.1
+  resolution: "@brandonblack/musig@npm:0.0.1-alpha.1"
+  checksum: 3e116b30716481bf3d28d2a229bf9d93b3c6753f8c3d833c573db167656f135bfcb76d3c63a8c9c44d9cec6d6cafe56c420b4e647a9307ce69a31eb51ca11724
+  languageName: node
+  linkType: hard
+
 "@coinbase/wallet-sdk@npm:3.9.1":
   version: 3.9.1
   resolution: "@coinbase/wallet-sdk@npm:3.9.1"
@@ -1761,8 +1777,8 @@ __metadata:
 
 "@liquity/chicken-bonds@file:.yalc/@liquity/chicken-bonds::locator=%40liquity%2Fdev-frontend%40workspace%3Apackages%2Fdev-frontend":
   version: 0.0.1
-  resolution: "@liquity/chicken-bonds@file:.yalc/@liquity/chicken-bonds#.yalc/@liquity/chicken-bonds::hash=f4a3c3&locator=%40liquity%2Fdev-frontend%40workspace%3Apackages%2Fdev-frontend"
-  checksum: c16397fed7724fd7ab81ca45b8531dc73437d494543e36b4c290fb1f10acc0b9ef541cad8b7a60789c02f4639a25bb951451b1eb6ca2ed5403fca6f79dd7f13b
+  resolution: "@liquity/chicken-bonds@file:.yalc/@liquity/chicken-bonds#.yalc/@liquity/chicken-bonds::hash=9e683d&locator=%40liquity%2Fdev-frontend%40workspace%3Apackages%2Fdev-frontend"
+  checksum: 02d064f55504178cc59d0975773d4e257c3e31c1a520bb7f61a1ab987ac5ad23b900206c1ceecffbef75c6738da399c11e9855372022840b1f47c210446fd1a9
   languageName: node
   linkType: hard
 
@@ -1827,6 +1843,7 @@ __metadata:
     happy-dom: ^13.6.2
     lambert-w-function: 3.0.0
     npm-run-all: 4.1.5
+    quais: ^1.0.0-alpha.31
     react: ^18.2.0
     react-circular-progressbar: ^2.1.0
     react-copy-to-clipboard: ^5.1.0
@@ -2414,6 +2431,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@noble/curves@npm:^1.7.0":
+  version: 1.7.0
+  resolution: "@noble/curves@npm:1.7.0"
+  dependencies:
+    "@noble/hashes": 1.6.0
+  checksum: e220b704f1e516f326fff985e794e840a267f5542e1388737142b08177672ebc41b460b5a5bf636d7622c68e8ae719bc042ccd8aed16dc14311450a94b5f2a05
+  languageName: node
+  linkType: hard
+
 "@noble/hashes@npm:1.1.2":
   version: 1.1.2
   resolution: "@noble/hashes@npm:1.1.2"
@@ -2432,6 +2458,13 @@ __metadata:
   version: 1.3.3
   resolution: "@noble/hashes@npm:1.3.3"
   checksum: 8a6496d1c0c64797339bc694ad06cdfaa0f9e56cd0c3f68ae3666cfb153a791a55deb0af9c653c7ed2db64d537aa3e3054629740d2f2338bb1dcb7ab60cd205b
+  languageName: node
+  linkType: hard
+
+"@noble/hashes@npm:1.6.0":
+  version: 1.6.0
+  resolution: "@noble/hashes@npm:1.6.0"
+  checksum: 07729b80108d2a9b862eb4e070d4f78ca7ee86b9a9c13a4f7c338ba47a15d4386dd283235da71f21ad515fa9f0b9429fc3da39d2f2b4a50e2442212d14cfd4a9
   languageName: node
   linkType: hard
 
@@ -3505,6 +3538,13 @@ __metadata:
   version: 1.1.5
   resolution: "@scure/base@npm:1.1.5"
   checksum: 9e9ee6088cb3aa0fb91f5a48497d26682c7829df3019b1251d088d166d7a8c0f941c68aaa8e7b96bbad20c71eb210397cb1099062cde3e29d4bad6b975c18519
+  languageName: node
+  linkType: hard
+
+"@scure/base@npm:^1.1.9":
+  version: 1.2.1
+  resolution: "@scure/base@npm:1.2.1"
+  checksum: 061e04e4f6ed7bada6cdad4c799e6a82f30dda3f4008895bdb2e556f333f9b41f44dc067d25c064357ed6c012ea9c8be1e7927caf8a083af865b8de27b52370c
   languageName: node
   linkType: hard
 
@@ -6191,6 +6231,13 @@ __metadata:
   version: 3.0.0
   resolution: "aes-js@npm:3.0.0"
   checksum: 251e26d533cd1a915b44896b17d5ed68c24a02484cfdd2e74ec700a309267db96651ea4eb657bf20aac32a3baa61f6e34edf8e2fec2de440a655da9942d334b8
+  languageName: node
+  linkType: hard
+
+"aes-js@npm:4.0.0-beta.5":
+  version: 4.0.0-beta.5
+  resolution: "aes-js@npm:4.0.0-beta.5"
+  checksum: cc2ea969d77df939c32057f7e361b6530aa6cb93cb10617a17a45cd164e6d761002f031ff6330af3e67e58b1f0a3a8fd0b63a720afd591a653b02f649470e15b
   languageName: node
   linkType: hard
 
@@ -10178,6 +10225,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv@npm:^16.4.1":
+  version: 16.4.7
+  resolution: "dotenv@npm:16.4.7"
+  checksum: c27419b5875a44addcc56cc69b7dc5b0e6587826ca85d5b355da9303c6fc317fc9989f1f18366a16378c9fdd9532d14117a1abe6029cc719cdbbef6eaef2cea4
+  languageName: node
+  linkType: hard
+
 "dotenv@npm:^5.0.1":
   version: 5.0.1
   resolution: "dotenv@npm:5.0.1"
@@ -12981,6 +13035,13 @@ __metadata:
   bin:
     gluegun: bin/gluegun
   checksum: 2c91934b98022018a524a3be32efb3e4567905a618ccb4aca4f19207ff4b37262bc18264b306f1c82757eaab634bac6c06aacff16059b11a38deefd07b6293b6
+  languageName: node
+  linkType: hard
+
+"google-protobuf@npm:^3.21.4":
+  version: 3.21.4
+  resolution: "google-protobuf@npm:3.21.4"
+  checksum: 048fa2cb579f5f88c977774b2ae36851807379d9329a6895fe3685df69ba6c927e2ff463d08d5eecd56becd9c65bca406f34f90e27984a3077e8629bb3a2a766
   languageName: node
   linkType: hard
 
@@ -19845,6 +19906,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"quais@npm:^1.0.0-alpha.31":
+  version: 1.0.0-alpha.31
+  resolution: "quais@npm:1.0.0-alpha.31"
+  dependencies:
+    "@bitcoinerlab/secp256k1": ^1.1.1
+    "@brandonblack/musig": ^0.0.1-alpha.1
+    "@noble/curves": 1.2.0
+    "@noble/hashes": 1.3.2
+    "@scure/base": ^1.1.9
+    aes-js: 4.0.0-beta.5
+    dotenv: ^16.4.1
+    google-protobuf: ^3.21.4
+    tslib: ^2.6.2
+    ws: ^8.17.1
+  checksum: 3af722ed3df33f9530a8b19f6d11a97cff134b4d5f3fb02073f6c6097f6fd796b7e2f1ce3e99869de87def17bfa9dcceff2bde2740abe91b78ff355b097cef98
+  languageName: node
+  linkType: hard
+
 "query-string@npm:7.1.3":
   version: 7.1.3
   resolution: "query-string@npm:7.1.3"
@@ -25321,6 +25400,21 @@ __metadata:
     utf-8-validate:
       optional: true
   checksum: c3c100a181b731f40b7f2fddf004aa023f79d64f489706a28bc23ff88e87f6a64b3c6651fbec3a84a53960b75159574d7a7385709847a62ddb7ad6af76f49138
+  languageName: node
+  linkType: hard
+
+"ws@npm:^8.17.1":
+  version: 8.18.0
+  resolution: "ws@npm:8.18.0"
+  peerDependencies:
+    bufferutil: ^4.0.1
+    utf-8-validate: ">=5.0.2"
+  peerDependenciesMeta:
+    bufferutil:
+      optional: true
+    utf-8-validate:
+      optional: true
+  checksum: 91d4d35bc99ff6df483bdf029b9ea4bfd7af1f16fc91231a96777a63d263e1eabf486e13a2353970efc534f9faa43bdbf9ee76525af22f4752cbc5ebda333975
   languageName: node
   linkType: hard
 
