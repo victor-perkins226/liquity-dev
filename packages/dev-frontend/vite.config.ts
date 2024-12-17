@@ -28,11 +28,6 @@ export default defineConfig({
     testTimeout: 10000
   },
   server: {
-    cors: false,
-    port: 5000, // Ensure the port is correct
-    open: true, // Automatically open the browser when starting,
-    // proxy: {
-    //   '/api': 'http://localhost:5000', // Adjust based on your backend server URL
-    // },
+    cors: false
   }
 });
