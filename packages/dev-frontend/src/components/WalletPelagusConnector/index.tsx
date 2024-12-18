@@ -7,23 +7,39 @@ import { Box, Button, Flex } from "theme-ui";
 import { Icon } from "../Icon.js";
 import { pelagusConnector } from '../../providers/pelagusConnector.js';
 import { useQuaisSigner } from '../../providers/useQuaisProvider.js';
-const WalletPelagusConnector = () => {
+import { useConfig } from 'wagmi';
 
-    const handleConnect = () => {
+interface WalletPelagusConnectorProps {
+    onConnected: (connected: boolean) => void
+}
+
+const WalletPelagusConnector = (props: WalletPelagusConnectorProps) => {
+
+    const config = useConfig();
+   
+    const handleConnect = async () => {
         if (window.pelagus) {
-            const signer = useQuaisSigner({ chainId: 9000 });
-            
+            const result = await config.connectors[0].connect()
+            props.onConnected(!!result)
         }
         else {
             window.location.href = "https://chromewebstore.google.com/detail/pelagus/nhccebmfjcbhghphpclcfdkkekheegop";
         }
     };
 
+    const handleDisconnect = async () => {
+        await config.connectors[0].disconnect()
+    }
+
     return (
         <Flex sx={{ height: "100vh", justifyContent: "center", alignItems: "center" }}>
               <Button onClick={handleConnect}>
                 <Icon name="plug" size="lg" />
                 <Box sx={{ ml: 2 }}>Connect wallet</Box>
+              </Button>
+              <Button onClick={handleDisconnect}>
+                <Icon name="plug" size="lg" />
+                <Box sx={{ ml: 2 }}>Disconnect wallet</Box>
               </Button>
         </Flex>
     );

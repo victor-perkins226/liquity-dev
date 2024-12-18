@@ -5,6 +5,7 @@ import { type Config, useConnectorClient } from 'wagmi'
 
 export function clientToSigner(client: Client<Transport, Chain, Account>) {
   const { account, chain, transport } = client
+  console.log({client})
   const network = {
     chainId: chain.id,
     name: chain.name,
@@ -21,5 +22,6 @@ export function clientToSigner(client: Client<Transport, Chain, Account>) {
 /** Hook to convert a viem Wallet Client to an ethers.js Signer. */
 export function useQuaisSigner({ chainId }: { chainId?: number } = {}) {
   const { data: client } = useConnectorClient<Config>({ chainId })
+  console.log({quaiSignerClient: client})
   return useMemo(() => (client ? clientToSigner(client) : undefined), [client])
 }

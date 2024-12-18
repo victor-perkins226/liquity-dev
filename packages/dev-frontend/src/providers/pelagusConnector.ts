@@ -10,7 +10,7 @@ export type PelagusConnectorParameters = {};
 
 declare global {
   interface Window {
-    pelagus?: Eip1193Provider & AbstractProvider;
+    pelagus?: any;
   }
 }
 
@@ -26,11 +26,11 @@ export function pelagusConnector(parameters: PelagusConnectorParameters = {}) {
   return createConnector(
     ({ emitter }) => {
       // Create the provider using Quais and Pelagus
+
       const provider =
         typeof window !== 'undefined' && window.pelagus
           ? new quais.BrowserProvider(window.pelagus)
           : undefined;
-
       // Event handlers
       const onAccountsChanged = (accounts: string[]) => {
         emitter.emit('change', { accounts: accounts as `0x${string}`[] });
@@ -53,7 +53,7 @@ export function pelagusConnector(parameters: PelagusConnectorParameters = {}) {
         window.pelagus.on('chainChanged', onChainChanged);
         window.pelagus.on('disconnect', onDisconnect);
       };
-
+    
       // Remove event listeners
       const removeListeners = () => {
         if (!window.pelagus?.removeListener) return;
@@ -68,7 +68,8 @@ export function pelagusConnector(parameters: PelagusConnectorParameters = {}) {
         if (!provider) throw new Error('Pelagus wallet not found');
 
         // Get accounts using provider.send
-        const accounts: string[] = await provider.send('requestAccounts', []);
+        const accounts: string[] = await provider.send('quai_requestAccounts', []);
+        console.log({accounts})
         if (!accounts || accounts.length === 0) {
           throw new Error('No accounts found');
         }
@@ -81,7 +82,7 @@ export function pelagusConnector(parameters: PelagusConnectorParameters = {}) {
         setupListeners();
 
         emitter.emit('connect', { chainId, accounts: accounts as `0x${string}`[] });
-
+        
         return {
           accounts: accounts as `0x${string}`[],
           chainId,
