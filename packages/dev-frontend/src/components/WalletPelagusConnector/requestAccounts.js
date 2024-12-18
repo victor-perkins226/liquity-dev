@@ -4,12 +4,12 @@ export const requestAccounts = async () => {
 	await window.pelagus
 		.request({ method: 'quai_requestAccounts' })
 		.then((accounts) => {
-			const zone = quais.getZoneFromAddress(accounts[0])
+			const zone = quais.getZoneForAddress(accounts[0])
 			const address = {
-				shard: shard,
+				shard: zone,
 				address: accounts[0],
 			}
-			console.log('Account:', address)
+			// return address
 		})
 		.catch((error) => {
 			if (error.code === 4001) {
@@ -19,4 +19,9 @@ export const requestAccounts = async () => {
 				console.error(error)
 			}
 		})
+}
+
+
+export const isConnected = () => {
+	return window.pelagus.isConnected
 }

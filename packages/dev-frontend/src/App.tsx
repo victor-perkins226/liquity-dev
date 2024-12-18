@@ -1,6 +1,6 @@
 import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { WagmiProvider, createConfig, fallback, http } from "wagmi";
+import { WagmiConfig, WagmiProvider, createConfig, fallback, http } from "wagmi";
 import { injected } from "wagmi/connectors";
 import { mainnet, goerli, sepolia, localhost } from "wagmi/chains";
 import { ConnectKitProvider, getDefaultConfig, getDefaultConnectors } from "connectkit";
@@ -17,6 +17,7 @@ import { DisposableWalletProvider } from "./testUtils/DisposableWalletProvider";
 import { LiquityFrontend } from "./LiquityFrontend";
 import { AppLoader } from "./components/AppLoader";
 import { useAsyncValue } from "./hooks/AsyncValue";
+import { wagmiConfig } from "./providers/pelagusConnector";
 
 const isDemoMode = import.meta.env.VITE_APP_DEMO_MODE === "true";
 
@@ -153,7 +154,8 @@ const App = () => {
           )}
         >
           <QueryClientProvider client={queryClient}>
-            <ConnectKitProvider options={{ hideBalance: true }}>
+            {/* <ConnectKitProvider options={{ hideBalance: true }}> */}
+            <WagmiConfig config={wagmiConfig}>
               <WalletConnector loader={loader}>
                 <LiquityProvider
                   loader={loader}
@@ -165,7 +167,8 @@ const App = () => {
                   </TransactionProvider>
                 </LiquityProvider>
               </WalletConnector>
-            </ConnectKitProvider>
+            {/* </ConnectKitProvider> */}
+            </WagmiConfig>
           </QueryClientProvider>
         </WagmiProvider>
       )}

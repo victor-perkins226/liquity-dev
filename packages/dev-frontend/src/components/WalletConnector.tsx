@@ -2,16 +2,23 @@ import { ConnectKitButton } from "connectkit";
 import { Box, Button, Flex } from "theme-ui";
 import { Icon } from "./Icon";
 import WalletPelagusConnector from './WalletPelagusConnector'
+import { useState } from "react";
+import { isConnected } from "./WalletPelagusConnector/requestAccounts";
 
 type WalletConnectorProps = React.PropsWithChildren<{
   loader?: React.ReactNode;
 }>;
 
 export const WalletConnector: React.FC<WalletConnectorProps> = ({ children }) => {
+  const [accounts, setAccounts] = useState([]);
+
   return (
     <>
-      <WalletPelagusConnector />
-      <ConnectKitButton.Custom>
+      {
+        isConnected() ?  children : <WalletPelagusConnector onSetAccounts={setAccounts}/>
+      }
+      
+      {/* <ConnectKitButton.Custom>
         {connectKit =>
           connectKit.isConnected ? (
             children
@@ -24,7 +31,7 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({ children }) =>
             </Flex>
           )
         }
-      </ConnectKitButton.Custom>
+      </ConnectKitButton.Custom> */}
     </>
   );
 };

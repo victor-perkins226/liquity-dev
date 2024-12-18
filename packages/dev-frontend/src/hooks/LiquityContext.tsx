@@ -36,21 +36,21 @@ export const LiquityProvider: React.FC<LiquityProviderProps> = ({
 }) => {
   const chainId = useChainId();
   const client = useClient();
-
   const provider =
-    client &&
-    new Web3Provider(
+  client &&
+  new Web3Provider(
       (method, params) =>
-        client.request({
-          method: method as any,
-          params: params as any
-        }),
+      client.request({
+        method: method as any,
+        params: params as any
+      }),
       chainId
-    );
-
+      );
+      
   const account = useAccount();
   const walletClient = useWalletClient();
-
+      
+  console.log({provider, account, walletClient})
   const signer =
     account.address &&
     walletClient.data &&
@@ -90,7 +90,7 @@ export const LiquityProvider: React.FC<LiquityProviderProps> = ({
     return <>{loader}</>;
   }
 
-  if (config.testnetOnly && chainId === 1) {
+  if (config?.testnetOnly && chainId === 1) {
     return <>{unsupportedMainnetFallback}</>;
   }
 

@@ -1,9 +1,11 @@
 /// <reference types="vitest" />
 
 import { defineConfig } from "vite";
+import dns from 'dns'
 import react from "@vitejs/plugin-react-swc";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
 
+dns.setDefaultResultOrder('verbatim')
 // https://vitejs.dev/config/
 export default defineConfig({
   base: "./",

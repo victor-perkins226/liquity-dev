@@ -27,9 +27,9 @@ export const LiquityStoreProvider: React.FC<LiquityStoreProviderProps> = ({
     };
   }, [store]);
 
-  if (!loadedStore) {
-    return <>{loader}</>;
-  }
+  // if (!loadedStore) {
+  //   return <>{loader}</>;
+  // }
 
   return <LiquityStoreContext.Provider value={loadedStore}>{children}</LiquityStoreContext.Provider>;
 };

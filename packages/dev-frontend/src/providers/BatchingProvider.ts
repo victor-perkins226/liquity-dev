@@ -272,3 +272,4 @@ export class BatchedProvider extends BaseProvider {
     return this.underlyingProvider.detectNetwork();
   }
 }
+
