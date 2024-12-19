@@ -11,6 +11,7 @@ import ropsten from "../deployments/ropsten.json";
 import mainnet from "../deployments/mainnet.json";
 import kiln from "../deployments/kiln.json";
 import sepolia from "../deployments/sepolia.json";
+import quais from "../deployments/quais.json";
 
 import { numberify, panic } from "./_utils";
 import { EthersProvider, EthersSigner } from "./types";
@@ -36,7 +37,7 @@ const deployments: {
   [kovan.chainId]: kovan,
   [kiln.chainId]: kiln,
   [sepolia.chainId]: sepolia,
-
+  [quais.chainId]: quais,
   ...(dev !== null ? { [dev.chainId]: dev } : {})
 };
 
@@ -310,9 +311,9 @@ export function _connectByChainId(
   chainId: number,
   optionalParams?: EthersLiquityConnectionOptionalParams
 ): EthersLiquityConnection {
+  console.log({chain: deployments[chainId]})
   const deployment: _LiquityDeploymentJSON =
     deployments[chainId] ?? panic(new UnsupportedNetworkError(chainId));
-
   return connectionFrom(
     provider,
     signer,

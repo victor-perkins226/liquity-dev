@@ -27,19 +27,11 @@ const WalletPelagusConnector = (props: WalletPelagusConnectorProps) => {
         }
     };
 
-    const handleDisconnect = async () => {
-        await config.connectors[0].disconnect()
-    }
-
     return (
         <Flex sx={{ height: "100vh", justifyContent: "center", alignItems: "center" }}>
               <Button onClick={handleConnect}>
                 <Icon name="plug" size="lg" />
                 <Box sx={{ ml: 2 }}>Connect wallet</Box>
-              </Button>
-              <Button onClick={handleDisconnect}>
-                <Icon name="plug" size="lg" />
-                <Box sx={{ ml: 2 }}>Disconnect wallet</Box>
               </Button>
         </Flex>
     );

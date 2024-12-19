@@ -13,6 +13,7 @@ import {
 import { LiquityFrontendConfig, getConfig } from "../config";
 import { BatchedProvider } from "../providers/BatchingProvider";
 import { useQuaisSigner } from "../providers/useQuaisProvider";
+import { Signer } from "quais";
 
 type LiquityContextValue = {
   config: LiquityFrontendConfig;
@@ -35,6 +36,8 @@ export const LiquityProvider: React.FC<LiquityProviderProps> = ({
   unsupportedNetworkFallback,
   unsupportedMainnetFallback
 }) => {
+
+  const [signer, seteSigner] = useState<Signer | undefined>(undefined);
   const chainId = useChainId();
   const client = useClient();
   console.log({chainId, client})
@@ -64,7 +67,17 @@ export const LiquityProvider: React.FC<LiquityProviderProps> = ({
         }),
       chainId
     ).getSigner(account.address);*/
-    const signer = useQuaisSigner({chainId})
+  useEffect(() => {
+    // Define the async function to fetch data
+    const fetchData = async () => {
+      const signer = await useQuaisSigner({chainId})
+      seteSigner(signer)
+    };
+
+    fetchData();  // Call the async function
+  }, []); 
+
+  
 
   const [config, setConfig] = useState<LiquityFrontendConfig>();
   
@@ -74,7 +87,7 @@ export const LiquityProvider: React.FC<LiquityProviderProps> = ({
     if (config && provider && signer && account.address) {
       const batchedProvider = new BatchedProvider(provider, chainId);
       // batchedProvider._debugLog = true;
-
+      console.log({batchedProvider})
       try {
         return _connectByChainId(batchedProvider, signer as any, chainId, {
           userAddress: account.address,
@@ -87,11 +100,12 @@ export const LiquityProvider: React.FC<LiquityProviderProps> = ({
     }
   }, [config, provider, signer, account.address, chainId]);
 
+  console.log({connection})
   useEffect(() => {
     getConfig().then(setConfig);
   }, []);
 
-  if (!config || !provider || /*!signer ||*/ !account.address) {
+  if (!config || !provider || !signer || !account.address) {
     return <>{loader}</>;
   }
 
@@ -99,9 +113,9 @@ export const LiquityProvider: React.FC<LiquityProviderProps> = ({
   //   return <>{unsupportedMainnetFallback}</>;
   // }
 
-  // if (!connection) {
-  //   return <>{unsupportedNetworkFallback}</>;
-  // }
+  if (!connection) {
+    return <>{unsupportedNetworkFallback}</>;
+  }
 
   const liquity = EthersLiquity._from(connection);
   liquity.store.logging = true;

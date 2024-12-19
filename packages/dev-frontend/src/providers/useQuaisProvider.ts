@@ -20,8 +20,15 @@ export function clientToSigner(client: Client<Transport, Chain, Account>) {
 }
 
 /** Hook to convert a viem Wallet Client to an ethers.js Signer. */
-export function useQuaisSigner({ chainId }: { chainId?: number } = {}) {
-  const { data: client } = useConnectorClient<Config>({ chainId })
-  console.log({quaiSignerClient: client})
-  return useMemo(() => (client ? clientToSigner(client) : undefined), [client])
+export async function useQuaisSigner({ chainId }: { chainId?: number } = {}) {
+  // const { data: client } = useConnectorClient<Config>({ chainId })
+  // console.log({quaiSignerClient: client})
+  // return useMemo(() => (client ? clientToSigner(client) : undefined), [client])
+
+  // configure pelagus as the provider
+  const provider = new BrowserProvider(window.pelagus)
+
+  // get the signer
+  const signer = await provider.getSigner()
+  return signer
 }
